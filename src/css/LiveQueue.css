@@ -1,0 +1,578 @@
+/* ================================
+   MEDIBRIDGE AI - LIVE QUEUE
+   ================================ */
+
+.queue-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0, 110, 255, 0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(255, 0, 50, 0.10), transparent 35%),
+    #05070b;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 35px 25px;
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   HEADER
+   ================================ */
+
+.queue-header {
+  height: 95px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.queue-header h1 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.queue-header h1 span {
+  color: #168cff;
+}
+
+.queue-header p {
+  margin: 5px 0 0;
+  color: #7f8a9a;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.online-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border: 1px solid rgba(0, 255, 140, 0.25);
+  border-radius: 25px;
+  color: #52e6a4;
+  font-size: 12px;
+  font-weight: bold;
+  background: rgba(0, 255, 140, 0.05);
+}
+
+.online-status span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #00e88a;
+  box-shadow: 0 0 12px #00e88a;
+}
+
+
+/* ================================
+   TITLE
+   ================================ */
+
+.queue-title {
+  text-align: center;
+  padding: 30px 0 20px;
+}
+
+.queue-title h2 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: 4px;
+}
+
+.queue-title p {
+  color: #8994a5;
+  margin-top: 8px;
+}
+
+
+/* ================================
+   DOCTOR INFO
+   ================================ */
+
+.doctor-info {
+  max-width: 1100px;
+  margin: 0 auto 25px;
+
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 0.8fr;
+
+  background: #0b0f16;
+  border: 1px solid #1b2431;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.doctor-info > div {
+  padding: 17px 25px;
+  border-right: 1px solid #1b2431;
+}
+
+.doctor-info > div:last-child {
+  border-right: none;
+}
+
+.doctor-info p {
+  margin: 0 0 7px;
+  color: #687587;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.doctor-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+
+/* ================================
+   MAIN QUEUE
+   ================================ */
+
+.queue-container {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+/* ================================
+   COMMON CARDS
+   ================================ */
+
+.serving-card,
+.your-token-card,
+.waiting-card {
+  background: linear-gradient(
+    145deg,
+    #0e131c,
+    #080b11
+  );
+
+  border: 1px solid #1b2431;
+  border-radius: 18px;
+  padding: 28px;
+  box-sizing: border-box;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35);
+
+  transition: 0.3s;
+}
+
+.serving-card:hover,
+.your-token-card:hover,
+.waiting-card:hover {
+  transform: translateY(-3px);
+  border-color: #273548;
+}
+
+
+/* ================================
+   NOW SERVING
+   ================================ */
+
+.serving-card {
+  border-top: 3px solid #ff1744;
+  text-align: center;
+}
+
+.card-heading {
+  color: #a7b0bd;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.red-dot,
+.blue-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red-dot {
+  background: #ff1744;
+  box-shadow: 0 0 12px #ff1744;
+}
+
+.blue-dot {
+  background: #168cff;
+  box-shadow: 0 0 12px #168cff;
+}
+
+.big-token {
+  font-size: 65px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ff3157;
+
+  margin: 25px 0 12px;
+
+  text-shadow:
+    0 0 25px rgba(255, 23, 68, 0.35);
+}
+
+.serving-card p {
+  margin: 0;
+  color: #7d8897;
+  font-size: 13px;
+}
+
+
+/* ================================
+   YOUR TOKEN
+   ================================ */
+
+.your-token-card {
+  border-top: 3px solid #168cff;
+  text-align: center;
+}
+
+.your-token {
+  font-size: 55px;
+  font-weight: 900;
+  color: #168cff;
+  letter-spacing: 3px;
+  margin: 24px 0;
+
+  text-shadow:
+    0 0 25px rgba(22, 140, 255, 0.35);
+}
+
+.waiting-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: rgba(22, 140, 255, 0.08);
+  border: 1px solid rgba(22, 140, 255, 0.18);
+
+  padding: 10px 18px;
+  border-radius: 30px;
+
+  color: #8794a5;
+  font-size: 12px;
+}
+
+.waiting-time span {
+  font-size: 16px;
+}
+
+.waiting-time strong {
+  color: #ffffff;
+}
+
+
+/* ================================
+   WAITING QUEUE
+   ================================ */
+
+.waiting-card {
+  grid-column: 1 / -1;
+  border-top: 3px solid #168cff;
+}
+
+.waiting-card .card-heading {
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.token-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.queue-token {
+  min-height: 75px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  background: #080c13;
+  border: 1px solid #1d2938;
+  border-radius: 12px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: #cbd3df;
+
+  transition: 0.3s;
+}
+
+.queue-token:hover {
+  border-color: #168cff;
+  transform: translateY(-3px);
+}
+
+.queue-token.next-token {
+  border-color: rgba(22, 140, 255, 0.7);
+  background: rgba(22, 140, 255, 0.08);
+  color: #168cff;
+}
+
+.queue-token small {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+
+  font-size: 8px;
+  color: #168cff;
+  letter-spacing: 1px;
+}
+
+
+/* ================================
+   LIVE MESSAGE
+   ================================ */
+
+.live-message {
+  max-width: 1100px;
+  margin: 20px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  color: #697586;
+  font-size: 12px;
+}
+
+.live-circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #00e88a;
+
+  animation: livePulse 1.4s infinite;
+}
+
+@keyframes livePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 232, 138, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 232, 138, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 232, 138, 0);
+  }
+}
+
+
+/* ================================
+   BUTTONS
+   ================================ */
+
+.queue-buttons {
+  max-width: 1100px;
+  margin: 25px auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.queue-buttons button {
+  border: none;
+  border-radius: 10px;
+
+  padding: 13px 27px;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.back-btn {
+  background: #151b24;
+  color: #c4ccd7;
+  border: 1px solid #283444 !important;
+}
+
+.back-btn:hover {
+  background: #202936;
+}
+
+.home-btn {
+  background: #168cff;
+  color: white;
+
+  box-shadow: 0 5px 20px rgba(22, 140, 255, 0.2);
+}
+
+.home-btn:hover {
+  background: #0879e6;
+  transform: translateY(-2px);
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.queue-footer {
+  max-width: 1100px;
+  margin: 35px auto 0;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #151c26;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.queue-footer p {
+  margin: 0;
+  color: #5e6979;
+  font-size: 11px;
+}
+
+.queue-footer button {
+  border: 1px solid rgba(255, 23, 68, 0.4);
+  background: rgba(255, 23, 68, 0.08);
+  color: #ff4264;
+
+  border-radius: 8px;
+  padding: 9px 18px;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.queue-footer button:hover {
+  background: rgba(255, 23, 68, 0.16);
+}
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 800px) {
+
+  .queue-page {
+    padding: 0 18px 20px;
+  }
+
+  .queue-header {
+    height: auto;
+    padding: 20px 0;
+    gap: 15px;
+  }
+
+  .queue-header h1 {
+    font-size: 20px;
+  }
+
+  .online-status {
+    padding: 8px 12px;
+    font-size: 9px;
+  }
+
+  .queue-title h2 {
+    font-size: 27px;
+  }
+
+  .doctor-info {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-info > div {
+    border-right: none;
+    border-bottom: 1px solid #1b2431;
+  }
+
+  .doctor-info > div:last-child {
+    border-bottom: none;
+  }
+
+  .queue-container {
+    grid-template-columns: 1fr;
+  }
+
+  .waiting-card {
+    grid-column: auto;
+  }
+
+  .token-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .big-token {
+    font-size: 48px;
+  }
+
+  .your-token {
+    font-size: 45px;
+  }
+
+  .queue-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* ================================
+   SMALL MOBILE
+   ================================ */
+
+@media (max-width: 480px) {
+
+  .queue-title {
+    padding-top: 20px;
+  }
+
+  .queue-title h2 {
+    font-size: 23px;
+  }
+
+  .serving-card,
+  .your-token-card,
+  .waiting-card {
+    padding: 20px;
+  }
+
+  .big-token {
+    font-size: 40px;
+  }
+
+  .your-token {
+    font-size: 38px;
+  }
+
+  .token-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .queue-buttons button {
+    padding: 11px 18px;
+  }
+}

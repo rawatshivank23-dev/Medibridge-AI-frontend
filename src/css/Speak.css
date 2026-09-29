@@ -1,0 +1,857 @@
+/* =====================================
+   SPEAK PAGE
+===================================== */
+
+.speak-page {
+    min-height: 100vh;
+    padding: 35px 20px 50px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(37, 99, 235, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(239, 68, 68, 0.14),
+            transparent 35%
+        ),
+        #050505;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    text-align: center;
+}
+
+
+/* =====================================
+   BRAND
+===================================== */
+
+.speak-brand {
+    font-size: 34px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 25px;
+}
+
+.speak-brand-medi {
+    color: #ef4444;
+
+    text-shadow:
+        0 0 12px rgba(239, 68, 68, 0.35);
+}
+
+.speak-brand-ai {
+    color: white;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.speak-header {
+    margin-bottom: 35px;
+}
+
+.speak-logo {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.speak-header h1 {
+    margin: 0;
+
+    font-size: 32px;
+
+    color: white;
+}
+
+.speak-header p {
+    margin-top: 10px;
+
+    color: #a1a1aa;
+
+    font-size: 16px;
+}
+
+
+/* =====================================
+   MIC CONTAINER
+===================================== */
+
+.mic-container {
+    width: 100%;
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 35px 25px;
+
+    box-sizing: border-box;
+
+    border-radius: 24px;
+
+    background: rgba(15, 15, 15, 0.95);
+
+    border: 1px solid rgba(37, 99, 235, 0.45);
+
+    box-shadow:
+        0 0 35px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =====================================
+   MIC CIRCLE
+===================================== */
+
+.mic-circle {
+    width: 125px;
+    height: 125px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.35);
+
+    transition: 0.3s;
+}
+
+.mic-circle span {
+    font-size: 50px;
+}
+
+.mic-circle:hover {
+    transform: scale(1.05);
+}
+
+
+/* =====================================
+   ACTIVE MIC
+===================================== */
+
+.mic-active {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    animation: micPulse 1.4s infinite;
+
+    box-shadow:
+        0 0 40px rgba(239, 68, 68, 0.55);
+}
+
+
+@keyframes micPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================
+   MIC TITLE
+===================================== */
+
+.mic-container h2 {
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+.mic-description {
+    color: #a1a1aa;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================
+   VOICE WAVES
+===================================== */
+
+.voice-waves {
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 15px 0 20px;
+}
+
+.voice-waves span {
+    width: 5px;
+
+    height: 20px;
+
+    background: #ef4444;
+
+    border-radius: 10px;
+
+    animation: wave 0.8s infinite ease-in-out;
+}
+
+.voice-waves span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.voice-waves span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.voice-waves span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.voice-waves span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+
+@keyframes wave {
+
+    0%,
+    100% {
+        height: 15px;
+    }
+
+    50% {
+        height: 42px;
+    }
+}
+
+
+/* =====================================
+   MIC BUTTON
+===================================== */
+
+.mic-button {
+    width: 100%;
+
+    max-width: 350px;
+
+    padding: 16px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.mic-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.35);
+}
+
+.stop-button {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+}
+
+
+/* =====================================
+   TRANSCRIPT BOX
+===================================== */
+
+.transcript-box {
+    margin-top: 30px;
+
+    text-align: left;
+
+    background: #0b0b0b;
+
+    border: 1px solid #27272a;
+
+    border-radius: 15px;
+
+    padding: 18px;
+}
+
+
+/* =====================================
+   TRANSCRIPT TITLE
+===================================== */
+
+.transcript-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    font-weight: 700;
+}
+
+.clear-btn {
+    border: none;
+
+    background: transparent;
+
+    color: #ef4444;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+/* =====================================
+   TRANSCRIPT TEXT
+===================================== */
+
+.transcript-text {
+    min-height: 80px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #111111;
+
+    color: #e4e4e7;
+
+    line-height: 1.6;
+}
+
+.transcript-text p {
+    margin: 0;
+}
+
+.placeholder {
+    color: #71717a;
+}
+
+
+/* =====================================
+   ERROR
+===================================== */
+
+.speech-error {
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(239, 68, 68, 0.1);
+
+    border: 1px solid rgba(239, 68, 68, 0.4);
+
+    color: #fca5a5;
+
+    font-size: 14px;
+}
+
+
+/* =====================================
+   ANALYZE BUTTON
+===================================== */
+
+.analyze-button {
+    width: 100%;
+
+    max-width: 350px;
+
+    margin-top: 22px;
+
+    padding: 16px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.analyze-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+
+/* =====================================
+   EXAMPLES
+===================================== */
+
+.example-section {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 35px auto 0;
+}
+
+.example-section h3 {
+    color: #d4d4d8;
+
+    margin-bottom: 15px;
+}
+
+.example-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.example-card {
+    padding: 14px 18px;
+
+    background: #0d0d0d;
+
+    border: 1px solid #27272a;
+
+    border-radius: 12px;
+
+    color: #d4d4d8;
+
+    text-align: left;
+}
+
+
+/* =====================================
+   DISCLAIMER
+===================================== */
+
+.speak-disclaimer {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 30px auto 0;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+    text-align: left;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    border-radius: 12px;
+
+    background: rgba(37, 99, 235, 0.08);
+
+    border: 1px solid rgba(37, 99, 235, 0.25);
+
+    color: #a1a1aa;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.speak-disclaimer p {
+    margin: 0;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+
+    .speak-page {
+        padding: 25px 15px 40px;
+    }
+
+    .speak-brand {
+        font-size: 28px;
+    }
+
+    .speak-header h1 {
+        font-size: 26px;
+    }
+
+    .mic-container {
+        padding: 25px 15px;
+    }
+
+    .mic-circle {
+        width: 105px;
+        height: 105px;
+    }
+
+    .mic-circle span {
+        font-size: 42px;
+    }
+
+    .mic-button,
+    .analyze-button {
+        max-width: 100%;
+    }
+}
+/* =====================================
+   INPUT MODE BUTTONS
+===================================== */
+
+.input-mode-buttons {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.mode-button {
+    flex: 1;
+
+    max-width: 250px;
+
+    padding: 14px 20px;
+
+    border: 1px solid #27272a;
+
+    border-radius: 12px;
+
+    background: #0d0d0d;
+
+    color: #a1a1aa;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.mode-button:hover {
+    border-color: #2563eb;
+
+    color: white;
+}
+
+
+.active-mode {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    border-color: #2563eb;
+
+    color: white;
+
+    box-shadow:
+        0 5px 20px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =====================================
+   WRITE ICON
+===================================== */
+
+.write-icon {
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    font-size: 42px;
+
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.35);
+}
+
+
+/* =====================================
+   TEXTAREA
+===================================== */
+
+.symptom-textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 15px;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border: 1px solid #27272a;
+
+    background: #0b0b0b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-family: Arial, sans-serif;
+
+    resize: vertical;
+
+    outline: none;
+
+    line-height: 1.6;
+
+    transition: 0.3s;
+}
+
+
+.symptom-textarea:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 15px rgba(37, 99, 235, 0.18);
+}
+
+
+.symptom-textarea::placeholder {
+    color: #71717a;
+}
+
+
+/* =====================================
+   QUICK PROBLEMS
+===================================== */
+
+.quick-problems-section {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 35px auto 0;
+
+    text-align: center;
+}
+
+
+.quick-problems-section h2 {
+    color: white;
+
+    margin-bottom: 8px;
+}
+
+
+.quick-problems-section > p {
+    color: #a1a1aa;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================
+   QUICK PROBLEMS GRID
+===================================== */
+
+.quick-problems-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+/* =====================================
+   QUICK PROBLEM CARD
+===================================== */
+
+.quick-problem-card {
+    min-height: 100px;
+
+    padding: 15px 10px;
+
+    border-radius: 15px;
+
+    border: 1px solid #27272a;
+
+    background: #0d0d0d;
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.3s;
+}
+
+
+.quick-problem-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #2563eb;
+
+    background: #111827;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.18);
+}
+
+
+.quick-icon {
+    font-size: 30px;
+}
+
+
+.quick-name {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #e4e4e7;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+
+    .input-mode-buttons {
+        gap: 8px;
+    }
+
+
+    .mode-button {
+        padding: 13px 10px;
+
+        font-size: 15px;
+    }
+
+
+    .quick-problems-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+
+    .quick-problem-card {
+        min-height: 90px;
+    }
+
+
+    .quick-icon {
+        font-size: 26px;
+    }
+
+
+    .quick-name {
+        font-size: 13px;
+    }
+
+}

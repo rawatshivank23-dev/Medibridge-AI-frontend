@@ -1,0 +1,833 @@
+/* =========================================
+   MEDIBRIDGE AI - EMERGENCY PAGE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.emergency-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37, 99, 235, 0.14),
+            transparent 35%
+        ),
+        #050505;
+    color: white;
+    padding-bottom: 60px;
+    font-family: Arial, sans-serif;
+    transition: 0.4s;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.emergency-header {
+    width: 100%;
+    padding: 22px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f1f23;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.emergency-brand {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-medi {
+    color: white;
+}
+
+.brand-ai {
+    color: #2563eb;
+}
+
+.emergency-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #a1a1aa;
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    animation: statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.emergency-hero {
+    width: 88%;
+    max-width: 1100px;
+    margin: 40px auto 30px;
+    padding: 45px;
+    border-radius: 28px;
+    border: 1px solid #27272a;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37, 99, 235, 0.14),
+            rgba(0, 0, 0, 0.9)
+        );
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-icon {
+    width: 95px;
+    height: 95px;
+    flex-shrink: 0;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111827;
+    font-size: 48px;
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.25);
+    z-index: 2;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.emergency-label {
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero-content h1 {
+    margin: 8px 0;
+    font-size: clamp(30px, 5vw, 52px);
+    line-height: 1.05;
+}
+
+.hero-content p {
+    color: #a1a1aa;
+    font-size: 17px;
+    margin: 0;
+}
+
+.pulse-ring {
+    position: absolute;
+    right: -70px;
+    top: -100px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 30px rgba(37, 99, 235, 0.03),
+        0 0 0 60px rgba(37, 99, 235, 0.02);
+    animation: ringPulse 3s infinite;
+}
+
+@keyframes ringPulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.severity-section,
+.emergency-actions,
+.health-info {
+    width: 88%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.section-heading {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.section-heading > span {
+    font-size: 25px;
+}
+
+.section-heading h2 {
+    margin: 0 0 5px;
+    font-size: 22px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #71717a;
+}
+
+/* =========================================
+   SEVERITY
+========================================= */
+
+.severity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.severity-card {
+    min-height: 130px;
+    border: 1px solid #27272a;
+    border-radius: 18px;
+    background: #0c0c0e;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    padding: 22px;
+    transition: 0.3s;
+}
+
+.severity-card:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+    background: #101522;
+}
+
+.severity-card.selected {
+    border-color: #2563eb;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37, 99, 235, 0.2),
+            #0b0b0d
+        );
+    box-shadow: 0 10px 35px rgba(37, 99, 235, 0.12);
+}
+
+.severity-icon {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.severity-card strong {
+    display: block;
+    font-size: 17px;
+}
+
+.severity-card small {
+    display: block;
+    color: #71717a;
+    margin-top: 6px;
+}
+
+/* =========================================
+   CRITICAL AMBULANCE
+========================================= */
+
+.ambulance-alert {
+    width: 88%;
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 25px;
+    border-radius: 22px;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    background:
+        linear-gradient(
+            110deg,
+            rgba(127, 29, 29, 0.3),
+            rgba(20, 8, 8, 0.9)
+        );
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 15px 50px rgba(239, 68, 68, 0.08);
+    animation: emergencyGlow 2.5s infinite;
+}
+
+@keyframes emergencyGlow {
+    0% {
+        box-shadow: 0 15px 50px rgba(239, 68, 68, 0.05);
+    }
+
+    50% {
+        box-shadow: 0 15px 60px rgba(239, 68, 68, 0.18);
+    }
+
+    100% {
+        box-shadow: 0 15px 50px rgba(239, 68, 68, 0.05);
+    }
+}
+
+.ambulance-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(239, 68, 68, 0.12);
+    font-size: 38px;
+}
+
+.ambulance-content {
+    flex: 1;
+}
+
+.ambulance-content > span {
+    color: #f87171;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.ambulance-content h2 {
+    margin: 5px 0;
+}
+
+.ambulance-content p {
+    color: #a1a1aa;
+    margin: 0;
+}
+
+.ambulance-button {
+    border: none;
+    border-radius: 14px;
+    padding: 17px 25px;
+    background: linear-gradient(
+        135deg,
+        #dc2626,
+        #991b1b
+    );
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.25);
+    transition: 0.3s;
+}
+
+.ambulance-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(220, 38, 38, 0.4);
+}
+
+/* =========================================
+   ACTION CARDS
+========================================= */
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.action-card {
+    min-height: 145px;
+    padding: 23px;
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    background: #0b0b0d;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+    background: #0f1420;
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
+}
+
+.action-icon {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    font-size: 30px;
+}
+
+.action-text {
+    flex: 1;
+}
+
+.action-text h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+}
+
+.action-text p {
+    margin: 0;
+    color: #71717a;
+    line-height: 1.5;
+}
+
+.action-arrow {
+    color: #60a5fa;
+    font-size: 24px;
+}
+
+.emergency-request {
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.emergency-request:hover {
+    border-color: #ef4444;
+}
+
+/* =========================================
+   RESPONSE PANEL
+========================================= */
+
+.response-panel {
+    width: 88%;
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 30px;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    border-radius: 22px;
+    background: rgba(20, 83, 45, 0.1);
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.response-animation {
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    font-size: 35px;
+    animation: successPulse 2s infinite;
+}
+
+@keyframes successPulse {
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+.response-content {
+    flex: 1;
+}
+
+.response-label {
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.response-content h2 {
+    margin: 5px 0;
+}
+
+.response-content p {
+    color: #a1a1aa;
+}
+
+.response-time {
+    display: inline-flex;
+    gap: 8px;
+    padding: 9px 13px;
+    border-radius: 10px;
+    background: #101412;
+    color: #a1a1aa;
+    margin-bottom: 15px;
+}
+
+.reset-button {
+    display: block;
+    padding: 10px 16px;
+    border: 1px solid #27272a;
+    border-radius: 10px;
+    background: #111;
+    color: #a1a1aa;
+    cursor: pointer;
+}
+
+/* =========================================
+   HEALTH INFORMATION
+========================================= */
+
+.health-info {
+    padding: 28px;
+    border-radius: 22px;
+    border: 1px solid #27272a;
+    background: #09090b;
+}
+
+.health-info-header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.health-info-header > span {
+    font-size: 27px;
+}
+
+.health-info-header h2 {
+    margin: 0 0 5px;
+}
+
+.health-info-header p {
+    margin: 0;
+    color: #71717a;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.info-card {
+    display: flex;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #1f1f23;
+    border-radius: 15px;
+    background: #0d0d0f;
+}
+
+.info-card > span {
+    font-size: 25px;
+}
+
+.info-card strong {
+    font-size: 15px;
+}
+
+.info-card p {
+    margin: 5px 0 0;
+    color: #71717a;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   SAFETY NOTE
+========================================= */
+
+.safety-note {
+    width: 88%;
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #27272a;
+    background: #09090b;
+    display: flex;
+    gap: 14px;
+}
+
+.safety-note > span {
+    font-size: 22px;
+}
+
+.safety-note strong {
+    color: #d4d4d8;
+}
+
+.safety-note p {
+    margin: 7px 0 0;
+    color: #71717a;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.confirmation-modal {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid #27272a;
+    background: #0b0b0d;
+    text-align: center;
+    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.7);
+    animation: modalEnter 0.25s ease;
+}
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111827;
+    font-size: 35px;
+}
+
+.confirmation-modal h2 {
+    margin: 0 0 10px;
+}
+
+.confirmation-modal p {
+    color: #71717a;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 13px;
+    border-radius: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.modal-cancel {
+    border: 1px solid #27272a;
+    background: #111;
+    color: #a1a1aa;
+}
+
+.modal-confirm {
+    border: none;
+    background: #2563eb;
+    color: white;
+}
+
+.modal-confirm:hover {
+    background: #1d4ed8;
+}
+
+/* =========================================
+   CRITICAL MODE
+========================================= */
+
+.emergency-page.critical .hero-icon {
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    background: rgba(127, 29, 29, 0.2);
+    box-shadow: 0 0 45px rgba(239, 68, 68, 0.15);
+}
+
+.emergency-page.critical .emergency-label {
+    color: #f87171;
+}
+
+/* =========================================
+   URGENT MODE
+========================================= */
+
+.emergency-page.urgent .hero-icon {
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: rgba(120, 53, 15, 0.15);
+}
+
+.emergency-page.urgent .emergency-label {
+    color: #fbbf24;
+}
+
+/* =========================================
+   NORMAL MODE
+========================================= */
+
+.emergency-page.normal .hero-icon {
+    border: 1px solid rgba(37, 99, 235, 0.35);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .emergency-header {
+        padding: 18px 5%;
+    }
+
+    .emergency-hero {
+        width: 92%;
+        padding: 30px 24px;
+    }
+
+    .severity-section,
+    .emergency-actions,
+    .health-info,
+    .response-panel,
+    .safety-note,
+    .ambulance-alert {
+        width: 92%;
+    }
+
+    .severity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ambulance-alert {
+        flex-wrap: wrap;
+    }
+
+    .ambulance-button {
+        width: 100%;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .emergency-brand {
+        font-size: 20px;
+    }
+
+    .emergency-status {
+        font-size: 12px;
+    }
+
+    .emergency-hero {
+        margin-top: 25px;
+        padding: 25px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 35px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .action-card {
+        padding: 18px;
+        min-height: 125px;
+    }
+
+    .action-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 25px;
+    }
+
+    .action-text h3 {
+        font-size: 15px;
+    }
+
+    .action-text p {
+        font-size: 12px;
+    }
+
+    .response-panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .health-info {
+        padding: 20px;
+    }
+
+    .confirmation-modal {
+        padding: 25px 20px;
+    }
+}

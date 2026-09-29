@@ -1,0 +1,940 @@
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.kiosk-page {
+    min-height: 100vh;
+    width: 100%;
+    background: #f4f8fb;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17324d;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.kiosk-header {
+    height: 80px;
+    padding: 0 45px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e1e8ee;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.kiosk-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #1d9bf0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(29, 155, 240, 0.22);
+}
+
+.logo-text h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.logo-text span {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #738496;
+}
+
+.home-button {
+    border: none;
+    background: #eef5f9;
+    color: #24516f;
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.home-button:hover {
+    background: #dfeef6;
+    transform: translateY(-1px);
+}
+
+.home-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.kiosk-main {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 45px 25px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.kiosk-card {
+    width: 100%;
+    max-width: 1050px;
+    background: white;
+    border-radius: 24px;
+    padding: 38px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 35px rgba(35, 70, 95, 0.08);
+    animation: cardAppear 0.45s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.kiosk-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.title-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 17px;
+    background: #e7f5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+.kiosk-title h1 {
+    margin: 0;
+    font-size: 29px;
+    color: #17324d;
+}
+
+.kiosk-title p {
+    margin: 7px 0 0;
+    color: #728395;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   UPLOAD OPTIONS
+========================================= */
+
+.upload-options {
+    display: grid;
+    grid-template-columns: 1fr 70px 1fr;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-option {
+    min-height: 270px;
+    border: 2px solid #e3edf3;
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    background: #ffffff;
+}
+
+.upload-option:hover {
+    border-color: #8bcff5;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(29, 155, 240, 0.08);
+}
+
+.phone-option:hover {
+    background: #fbfdff;
+}
+
+.camera-option:hover {
+    background: #fbfdff;
+}
+
+.option-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #edf8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    transition: transform 0.25s ease;
+}
+
+.upload-option:hover .option-icon {
+    transform: scale(1.06);
+}
+
+.upload-option h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #1d405c;
+}
+
+.upload-option p {
+    max-width: 330px;
+    line-height: 1.5;
+    font-size: 14px;
+    color: #778896;
+    margin: 10px 0 20px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.primary-option-button,
+.secondary-option-button {
+    border: none;
+    border-radius: 11px;
+    padding: 13px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-option-button {
+    background: #1d9bf0;
+    color: white;
+    box-shadow: 0 5px 14px rgba(29, 155, 240, 0.18);
+}
+
+.primary-option-button:hover {
+    background: #1089d8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(29, 155, 240, 0.25);
+}
+
+.primary-option-button:active {
+    transform: scale(0.97);
+}
+
+.secondary-option-button {
+    background: #eaf6fc;
+    color: #187bb3;
+}
+
+.secondary-option-button:hover {
+    background: #d8edf8;
+    transform: translateY(-2px);
+}
+
+.secondary-option-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   OR DIVIDER
+========================================= */
+
+.or-divider {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.or-divider::before {
+    content: "";
+    position: absolute;
+    height: 170px;
+    width: 1px;
+    background: #dce6ec;
+}
+
+.or-divider span {
+    position: relative;
+    background: white;
+    padding: 10px 0;
+    color: #93a3af;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   PHONE CONNECTION / QR
+========================================= */
+
+.phone-connect {
+    margin-top: 30px;
+    background: #f4faff;
+    border: 1px solid #dceff9;
+    border-radius: 17px;
+    padding: 22px 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: all 0.25s ease;
+}
+
+.phone-connect:hover {
+    border-color: #b9e1f5;
+    box-shadow: 0 8px 22px rgba(29, 155, 240, 0.07);
+}
+
+.connect-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.connect-content {
+    flex: 1;
+}
+
+.connect-content h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    color: #17324d;
+}
+
+.connect-content p {
+    margin: 0;
+    color: #758694;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.connect-content small {
+    display: inline-block;
+    margin-top: 8px;
+    color: #1d9bf0;
+    font-size: 11px;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+
+/* =========================================
+   QR CONTAINER
+========================================= */
+
+.qr-placeholder {
+    width: 155px;
+    min-width: 155px;
+    height: 155px;
+    background: white;
+    border: 1px solid #d8e3e9;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 18px rgba(35, 70, 95, 0.08);
+    transition: all 0.25s ease;
+}
+
+.qr-placeholder:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(35, 70, 95, 0.12);
+}
+
+.qr-placeholder svg {
+    width: 140px;
+    height: 140px;
+    display: block;
+}
+
+.qr-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #738496;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   QR SCAN LABEL
+========================================= */
+
+.qr-placeholder::after {
+    content: "";
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.kiosk-message {
+    margin-top: 20px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    background: #edf9f2;
+    color: #28734a;
+    font-size: 14px;
+    text-align: center;
+    animation: messageAppear 0.25s ease;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   PREVIEW
+========================================= */
+
+.preview-section {
+    width: 100%;
+    animation: previewAppear 0.3s ease;
+}
+
+@keyframes previewAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.preview-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.remove-button {
+    border: none;
+    background: #fff0f0;
+    color: #c94c4c;
+    padding: 8px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.remove-button:hover {
+    background: #ffe0e0;
+    transform: translateY(-1px);
+}
+
+.image-preview-box {
+    width: 100%;
+    height: 370px;
+    border-radius: 17px;
+    overflow: hidden;
+    background: #f1f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e3ebef;
+}
+
+.selected-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.preview-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    color: #557080;
+    font-size: 14px;
+}
+
+.confirm-button {
+    width: 100%;
+    border: none;
+    background: #1d9f65;
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.confirm-button:hover {
+    background: #168955;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(29, 159, 101, 0.2);
+}
+
+.confirm-button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   CAMERA OVERLAY
+========================================= */
+
+.camera-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 28, 40, 0.78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.camera-modal {
+    width: 100%;
+    max-width: 760px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    animation: cameraAppear 0.25s ease;
+}
+
+@keyframes cameraAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.camera-header {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5ebef;
+}
+
+.camera-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.camera-close {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #f0f3f5;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all 0.2s ease;
+}
+
+.camera-close:hover {
+    background: #e1e7ea;
+    transform: rotate(90deg);
+}
+
+.camera-view {
+    height: 440px;
+    background: #111;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.camera-view video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-frame {
+    position: absolute;
+    width: 70%;
+    height: 65%;
+    border: 3px solid white;
+    border-radius: 15px;
+    pointer-events: none;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.15);
+}
+
+.camera-actions {
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cancel-camera {
+    border: none;
+    background: #edf1f3;
+    color: #415665;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-camera:hover {
+    background: #e1e7ea;
+}
+
+.capture-button {
+    border: none;
+    background: #1d9bf0;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.capture-button:hover {
+    background: #1089d8;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(29, 155, 240, 0.25);
+}
+
+.capture-button:active {
+    transform: scale(0.97);
+}
+
+.capture-button span {
+    margin-right: 8px;
+}
+
+
+/* =========================================
+   ACCESSIBILITY / FOCUS
+========================================= */
+
+button:focus-visible {
+    outline: 3px solid rgba(29, 155, 240, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .kiosk-header {
+        padding: 0 20px;
+    }
+
+    .kiosk-main {
+        padding: 25px 15px;
+    }
+
+    .kiosk-card {
+        padding: 25px 18px;
+    }
+
+    .kiosk-title h1 {
+        font-size: 23px;
+    }
+
+    .upload-options {
+        grid-template-columns: 1fr;
+    }
+
+    .or-divider {
+        height: 40px;
+    }
+
+    .or-divider::before {
+        width: 100%;
+        height: 1px;
+    }
+
+    .or-divider span {
+        padding: 0 12px;
+    }
+
+    .phone-connect {
+        flex-wrap: wrap;
+    }
+
+    .connect-content {
+        min-width: 200px;
+    }
+
+    .qr-placeholder {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-preview-box {
+        height: 280px;
+    }
+
+    .camera-view {
+        height: 350px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .kiosk-header {
+        height: 70px;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 26px;
+    }
+
+    .logo-text span {
+        display: none;
+    }
+
+    .logo-text h2 {
+        font-size: 18px;
+    }
+
+    .home-button {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .kiosk-main {
+        min-height: calc(100vh - 70px);
+        padding: 18px 10px;
+    }
+
+    .kiosk-card {
+        padding: 20px 15px;
+        border-radius: 18px;
+    }
+
+    .kiosk-title {
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .title-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .kiosk-title h1 {
+        font-size: 20px;
+    }
+
+    .kiosk-title p {
+        font-size: 13px;
+    }
+
+    .upload-option {
+        min-height: 245px;
+        padding: 23px 15px;
+    }
+
+    .upload-option h2 {
+        font-size: 18px;
+    }
+
+    .upload-option p {
+        font-size: 13px;
+    }
+
+    .phone-connect {
+        padding: 17px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+    }
+
+    .connect-content {
+        min-width: 0;
+    }
+
+    .connect-content h3 {
+        font-size: 15px;
+    }
+
+    .connect-content p {
+        font-size: 12px;
+    }
+
+    .qr-placeholder {
+        grid-column: 1 / -1;
+        margin: 5px auto 0;
+        width: 165px;
+        height: 165px;
+    }
+
+    .qr-placeholder svg {
+        width: 150px;
+        height: 150px;
+    }
+
+    .preview-label {
+        font-size: 14px;
+    }
+
+    .preview-info {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .image-preview-box {
+        height: 250px;
+    }
+
+    .camera-overlay {
+        padding: 10px;
+    }
+
+    .camera-modal {
+        border-radius: 15px;
+    }
+
+    .camera-view {
+        height: 300px;
+    }
+
+    .camera-frame {
+        width: 78%;
+        height: 65%;
+    }
+
+    .camera-actions {
+        gap: 10px;
+    }
+
+    .cancel-camera,
+    .capture-button {
+        padding: 11px 18px;
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL SCREEN
+========================================= */
+
+@media (max-width: 360px) {
+
+    .kiosk-title {
+        flex-direction: column;
+    }
+
+    .title-icon {
+        width: 46px;
+        height: 46px;
+    }
+
+    .home-button {
+        padding: 8px 10px;
+    }
+
+    .phone-connect {
+        grid-template-columns: 1fr;
+    }
+
+    .connect-icon {
+        margin: auto;
+    }
+
+    .connect-content {
+        text-align: center;
+    }
+
+    .qr-placeholder {
+        grid-column: auto;
+    }
+}

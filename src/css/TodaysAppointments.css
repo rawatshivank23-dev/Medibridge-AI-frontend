@@ -1,0 +1,848 @@
+/* =========================================
+   MEDIBRIDGE AI
+   TODAY'S APPOINTMENTS
+   ========================================= */
+
+.today-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 0 35px 25px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0, 110, 255, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 0, 55, 0.10),
+      transparent 35%
+    ),
+    #05070b;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.today-header {
+  height: 95px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.today-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.today-logo {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #168cff,
+    #0062c9
+  );
+
+  font-size: 23px;
+
+  box-shadow:
+    0 0 20px rgba(22,140,255,0.25);
+}
+
+
+.today-brand h1 {
+  margin: 0;
+
+  font-size: 25px;
+
+  letter-spacing: 2px;
+}
+
+
+.today-brand h1 span {
+  color: #168cff;
+}
+
+
+.today-brand p {
+  margin: 4px 0 0;
+
+  color: #707c8d;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+.today-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 17px;
+
+  border-radius: 25px;
+
+  color: #45e6a1;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  background: rgba(0,255,140,0.05);
+
+  border: 1px solid rgba(0,255,140,0.2);
+}
+
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #00e88a;
+
+  box-shadow: 0 0 12px #00e88a;
+}
+
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.today-title {
+  max-width: 1150px;
+
+  margin: 30px auto 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.calendar-big {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: rgba(22,140,255,0.10);
+
+  border: 1px solid rgba(22,140,255,0.25);
+
+  font-size: 30px;
+}
+
+
+.today-title h2 {
+  margin: 0;
+
+  font-size: 30px;
+
+  letter-spacing: 2px;
+}
+
+
+.today-title p {
+  margin: 7px 0 0;
+
+  color: #788494;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   DATE BAR
+   ========================================= */
+
+.date-bar {
+  max-width: 1150px;
+
+  margin: 0 auto 18px;
+
+  padding: 17px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  background: #0b1018;
+
+  border: 1px solid #1b2735;
+
+  border-radius: 14px;
+}
+
+
+.date-bar > div:first-child {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.date-icon {
+  font-size: 23px;
+}
+
+
+.date-bar small {
+  display: block;
+
+  color: #657285;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+}
+
+
+.date-bar strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 14px;
+}
+
+
+.appointment-count {
+  text-align: right;
+}
+
+
+.appointment-count strong {
+  color: #168cff;
+
+  font-size: 24px;
+}
+
+
+.appointment-count span {
+  display: block;
+
+  color: #6e7a8b;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   SEARCH
+   ========================================= */
+
+.today-search {
+  max-width: 1150px;
+
+  margin: 0 auto 18px;
+
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 17px;
+
+  box-sizing: border-box;
+
+  background: #080c12;
+
+  border: 1px solid #1b2735;
+
+  border-radius: 11px;
+}
+
+
+.today-search span {
+  font-size: 16px;
+
+  color: #637083;
+}
+
+
+.today-search input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+
+.today-search input::placeholder {
+  color: #596577;
+}
+
+
+/* =========================================
+   APPOINTMENT LIST
+   ========================================= */
+
+.today-list {
+  max-width: 1150px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border: 1px solid #1a2634;
+
+  border-radius: 15px;
+
+  background: #080c12;
+}
+
+
+.list-heading {
+  min-height: 45px;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr
+    1.7fr
+    1.5fr
+    0.8fr
+    1fr
+    1fr;
+
+  align-items: center;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  background: #0e141d;
+
+  border-bottom: 1px solid #1a2634;
+
+  color: #647184;
+
+  font-size: 9px;
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   APPOINTMENT CARD
+   ========================================= */
+
+.appointment-card {
+  min-height: 78px;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr
+    1.7fr
+    1.5fr
+    0.8fr
+    1fr
+    1fr;
+
+  align-items: center;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #151e29;
+
+  transition: 0.25s;
+}
+
+
+.appointment-card:last-child {
+  border-bottom: none;
+}
+
+
+.appointment-card:hover {
+  background: rgba(22,140,255,0.05);
+
+  border-left: 3px solid #168cff;
+}
+
+
+/* =========================================
+   TIME
+   ========================================= */
+
+.appointment-time {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.clock-icon {
+  color: #168cff;
+
+  font-size: 19px;
+}
+
+
+.appointment-time strong {
+  font-size: 13px;
+}
+
+
+/* =========================================
+   DOCTOR
+   ========================================= */
+
+.doctor-info {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.doctor-avatar {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #151e2a;
+
+  font-size: 17px;
+}
+
+
+.doctor-info strong {
+  display: block;
+
+  font-size: 12px;
+}
+
+
+.doctor-info small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #5e6a7a;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   DEPARTMENT
+   ========================================= */
+
+.department {
+  color: #a6b0bd;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   TOKEN
+   ========================================= */
+
+.token {
+  color: #168cff;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   ROOM
+   ========================================= */
+
+.room {
+  color: #9da8b6;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.appointment-status {
+  display: inline-block;
+
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+
+  font-weight: bold;
+}
+
+
+.completed {
+  color: #6ee7b7;
+
+  background: rgba(0,232,138,0.08);
+
+  border: 1px solid rgba(0,232,138,0.18);
+}
+
+
+.in-queue {
+  color: #168cff;
+
+  background: rgba(22,140,255,0.09);
+
+  border: 1px solid rgba(22,140,255,0.2);
+}
+
+
+.upcoming {
+  color: #ffc857;
+
+  background: rgba(255,200,87,0.08);
+
+  border: 1px solid rgba(255,200,87,0.18);
+}
+
+
+/* =========================================
+   NO RESULTS
+   ========================================= */
+
+.no-results {
+  text-align: center;
+
+  padding: 55px 20px;
+}
+
+
+.no-results span {
+  font-size: 35px;
+}
+
+
+.no-results h3 {
+  margin: 12px 0 5px;
+
+  font-size: 18px;
+}
+
+
+.no-results p {
+  margin: 0;
+
+  color: #687587;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   LEGEND
+   ========================================= */
+
+.status-legend {
+  max-width: 1150px;
+
+  margin: 18px auto;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 22px;
+
+  color: #7b8796;
+
+  font-size: 10px;
+}
+
+
+.status-legend > div {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.legend-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+}
+
+
+.completed-dot {
+  background: #00e88a;
+}
+
+
+.queue-dot {
+  background: #168cff;
+}
+
+
+.upcoming-dot {
+  background: #ffc857;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.today-buttons {
+  max-width: 1150px;
+
+  margin: 25px auto;
+
+  display: flex;
+
+  justify-content: space-between;
+}
+
+
+.today-buttons button {
+  padding: 12px 25px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+
+.today-back {
+  background: #151b24;
+
+  color: #c5ced9;
+
+  border: 1px solid #293646;
+}
+
+
+.today-back:hover {
+  background: #202a37;
+}
+
+
+.today-home {
+  background: #168cff;
+
+  color: #ffffff;
+
+  border: none;
+
+  box-shadow:
+    0 5px 20px rgba(22,140,255,0.2);
+}
+
+
+.today-home:hover {
+  background: #0879e6;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.today-footer {
+  max-width: 1150px;
+
+  margin: 30px auto 0;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #151d27;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #596576;
+
+  font-size: 10px;
+}
+
+
+.today-footer button {
+  padding: 8px 16px;
+
+  border-radius: 8px;
+
+  background: rgba(255,23,68,0.08);
+
+  color: #ff4264;
+
+  border: 1px solid rgba(255,23,68,0.3);
+
+  font-size: 10px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .today-page {
+    padding: 0 18px 20px;
+  }
+
+  .list-heading {
+    display: none;
+  }
+
+  .appointment-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+    padding: 18px;
+  }
+
+  .appointment-card > div:nth-child(3),
+  .appointment-card > div:nth-child(4),
+  .appointment-card > div:nth-child(5) {
+    margin-top: 5px;
+  }
+
+  .today-title h2 {
+    font-size: 23px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .today-header {
+    height: auto;
+
+    padding: 18px 0;
+
+    gap: 12px;
+  }
+
+  .today-brand h1 {
+    font-size: 18px;
+  }
+
+  .today-status {
+    font-size: 8px;
+
+    padding: 8px 10px;
+  }
+
+  .today-title {
+    align-items: flex-start;
+  }
+
+  .calendar-big {
+    width: 50px;
+    height: 50px;
+
+    font-size: 23px;
+  }
+
+  .today-title h2 {
+    font-size: 19px;
+  }
+
+  .date-bar {
+    padding: 14px;
+  }
+
+  .appointment-card {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .status-legend {
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .today-footer {
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+  }
+}

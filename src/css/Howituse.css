@@ -1,0 +1,1214 @@
+* {
+    box-sizing: border-box;
+}
+
+.howituse-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        #050505;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding-bottom: 60px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.howituse-header {
+    height: 74px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #202024;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.howituse-logo {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.howituse-logo span {
+    color: white;
+}
+
+.howituse-logo b {
+    color: #2563eb;
+}
+
+.guide-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    background: #0c0c0e;
+    color: #a1a1aa;
+    font-size: 13px;
+}
+
+.green-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.howituse-hero {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto 45px;
+    text-align: center;
+}
+
+.guide-label {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    background: rgba(37, 99, 235, 0.08);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.howituse-hero h1 {
+    margin: 0;
+    font-size: clamp(40px, 6vw, 66px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.howituse-hero h1 span {
+    color: #2563eb;
+}
+
+.howituse-hero > p {
+    max-width: 680px;
+    margin: 20px auto 35px;
+    color: #a1a1aa;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+
+/* =========================================
+   JOURNEY TOP
+========================================= */
+
+.journey-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.journey-step {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #27272a;
+    background: #0b0b0d;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.journey-step:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+}
+
+.journey-step.active {
+    border-color: #2563eb;
+    background: #111c34;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+}
+
+.journey-step span {
+    font-size: 24px;
+}
+
+.journey-step small {
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    font-size: 7px;
+    color: #71717a;
+}
+
+.journey-step.active small {
+    color: #60a5fa;
+}
+
+.journey-connector {
+    width: 45px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        #27272a,
+        #2563eb,
+        #27272a
+    );
+}
+
+
+/* =========================================
+   MAIN GUIDE
+========================================= */
+
+.howituse-main {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 22px;
+}
+
+
+/* =========================================
+   LEFT PANEL
+========================================= */
+
+.steps-panel {
+    padding: 22px;
+    border: 1px solid #27272a;
+    border-radius: 24px;
+    background: #09090b;
+}
+
+.panel-heading {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.heading-icon {
+    font-size: 25px;
+}
+
+.panel-heading h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+}
+
+.panel-heading p {
+    margin: 0;
+    color: #71717a;
+    font-size: 12px;
+}
+
+.step-card {
+    width: 100%;
+    min-height: 72px;
+    margin-bottom: 9px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid #1f1f23;
+    border-radius: 14px;
+    background: #0d0d0f;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    border-color: #2563eb;
+    transform: translateX(3px);
+}
+
+.step-card.selected {
+    border-color: #2563eb;
+    background:
+        linear-gradient(
+            100deg,
+            rgba(37, 99, 235, 0.18),
+            rgba(37, 99, 235, 0.02)
+        );
+    box-shadow: inset 3px 0 #2563eb;
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #15151a;
+    color: #71717a;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.step-card.selected .step-number {
+    background: #2563eb;
+    color: white;
+}
+
+.step-icon {
+    font-size: 22px;
+}
+
+.step-info {
+    flex: 1;
+}
+
+.step-info strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.step-info small {
+    color: #71717a;
+    font-size: 10px;
+}
+
+.step-arrow {
+    color: #52525b;
+    font-size: 18px;
+}
+
+.step-card.selected .step-arrow {
+    color: #60a5fa;
+}
+
+
+/* =========================================
+   VISUAL GUIDE
+========================================= */
+
+.visual-guide {
+    min-height: 650px;
+    padding: 28px;
+    border: 1px solid #27272a;
+    border-radius: 24px;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(37, 99, 235, 0.1),
+            transparent 45%
+        ),
+        #09090b;
+    display: flex;
+    flex-direction: column;
+}
+
+.visual-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.visual-heading > div:first-child > span {
+    color: #2563eb;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.visual-heading h2 {
+    margin: 6px 0 0;
+    font-size: 27px;
+}
+
+.big-step-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    border: 1px solid #263653;
+    font-size: 27px;
+}
+
+
+/* =========================================
+   KIOSK
+========================================= */
+
+.kiosk-stage {
+    flex: 1;
+    min-height: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.stage-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.08);
+    filter: blur(35px);
+}
+
+.kiosk-device {
+    width: 285px;
+    height: 390px;
+    padding: 12px;
+    border-radius: 23px;
+    border: 2px solid #303038;
+    background:
+        linear-gradient(
+            145deg,
+            #202027,
+            #0b0b0d
+        );
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.75),
+        inset 0 1px rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 2;
+    animation: kioskFloat 4s ease-in-out infinite;
+}
+
+@keyframes kioskFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.kiosk-camera {
+    width: 11px;
+    height: 11px;
+    margin: 2px auto 8px;
+    border-radius: 50%;
+    background: #050505;
+    border: 2px solid #3f3f46;
+}
+
+.kiosk-camera span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    margin: 2px;
+    border-radius: 50%;
+    background: #2563eb;
+    box-shadow: 0 0 7px #2563eb;
+}
+
+.kiosk-screen {
+    height: 300px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #27272a;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37, 99, 235, 0.16),
+            transparent 55%
+        ),
+        #050507;
+}
+
+.screen-header {
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #18181b;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.screen-header span {
+    color: white;
+}
+
+.screen-header b {
+    color: #2563eb;
+}
+
+.screen-body {
+    height: calc(100% - 43px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.screen-body h3 {
+    margin: 6px 0;
+    font-size: 18px;
+}
+
+.screen-body p {
+    margin: 5px 0;
+    color: #71717a;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   START VISUAL
+========================================= */
+
+.visual-icon-large {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.fake-button {
+    margin-top: 15px;
+    padding: 9px 28px;
+    border-radius: 8px;
+    background: #2563eb;
+    font-size: 9px;
+    font-weight: 800;
+    box-shadow:
+        0 5px 20px rgba(37, 99, 235, 0.3);
+}
+
+
+/* =========================================
+   SCAN VISUAL
+========================================= */
+
+.scan-area {
+    width: 145px;
+    height: 105px;
+    position: relative;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.id-card-visual {
+    font-size: 40px;
+}
+
+.scan-corner {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-color: #2563eb;
+    border-style: solid;
+}
+
+.tl {
+    top: -2px;
+    left: -2px;
+    border-width: 2px 0 0 2px;
+}
+
+.tr {
+    top: -2px;
+    right: -2px;
+    border-width: 2px 2px 0 0;
+}
+
+.bl {
+    bottom: -2px;
+    left: -2px;
+    border-width: 0 0 2px 2px;
+}
+
+.br {
+    bottom: -2px;
+    right: -2px;
+    border-width: 0 2px 2px 0;
+}
+
+.scan-laser {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    height: 2px;
+    background: #2563eb;
+    box-shadow: 0 0 10px #2563eb;
+    animation: scanAnimation 2s infinite;
+}
+
+@keyframes scanAnimation {
+
+    0% {
+        top: 10px;
+    }
+
+    50% {
+        top: 90px;
+    }
+
+    100% {
+        top: 10px;
+    }
+}
+
+.card-options {
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.card-options span {
+    width: 28px;
+    height: 25px;
+    border: 1px solid #27272a;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0d0f;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   SPEAK VISUAL
+========================================= */
+
+.mic-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.3),
+            rgba(37, 99, 235, 0.04)
+        );
+    border: 1px solid #2563eb;
+    font-size: 32px;
+    box-shadow:
+        0 0 30px rgba(37, 99, 235, 0.25);
+    animation: micPulse 1.5s infinite;
+}
+
+@keyframes micPulse {
+
+    50% {
+        transform: scale(1.07);
+        box-shadow:
+            0 0 42px rgba(37, 99, 235, 0.4);
+    }
+}
+
+.sound-waves {
+    height: 30px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.sound-waves i {
+    width: 3px;
+    border-radius: 5px;
+    background: #2563eb;
+    animation: soundAnimation 0.8s infinite alternate;
+}
+
+.sound-waves i:nth-child(1) {
+    height: 8px;
+}
+
+.sound-waves i:nth-child(2) {
+    height: 18px;
+}
+
+.sound-waves i:nth-child(3) {
+    height: 25px;
+}
+
+.sound-waves i:nth-child(4) {
+    height: 14px;
+}
+
+.sound-waves i:nth-child(5) {
+    height: 22px;
+}
+
+.sound-waves i:nth-child(6) {
+    height: 15px;
+}
+
+.sound-waves i:nth-child(7) {
+    height: 8px;
+}
+
+@keyframes soundAnimation {
+
+    from {
+        transform: scaleY(0.6);
+    }
+
+    to {
+        transform: scaleY(1.2);
+    }
+}
+
+
+/* =========================================
+   QUEUE VISUAL
+========================================= */
+
+.queue-ticket {
+    font-size: 43px;
+    margin-bottom: 5px;
+}
+
+.queue-label {
+    color: #71717a;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+}
+
+.queue-number {
+    margin: 8px 0;
+    font-size: 45px;
+    font-weight: 900;
+    color: #60a5fa;
+}
+
+.queue-status {
+    padding: 6px 12px;
+    border-radius: 15px;
+    background: rgba(34, 197, 94, 0.08);
+    color: #4ade80;
+    font-size: 9px;
+}
+
+
+/* =========================================
+   DOCTOR VISUAL
+========================================= */
+
+.doctor-visual {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.doctor-room {
+    margin-top: 12px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    background: #111827;
+    border: 1px solid #263653;
+    color: #60a5fa;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   PRESCRIPTION VISUAL
+========================================= */
+
+.prescription-visual {
+    font-size: 45px;
+    margin-bottom: 8px;
+}
+
+.prescription-lines {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.prescription-lines span {
+    height: 4px;
+    border-radius: 5px;
+    background: #27272a;
+}
+
+.prescription-lines span:nth-child(1) {
+    width: 100%;
+}
+
+.prescription-lines span:nth-child(2) {
+    width: 75%;
+}
+
+.prescription-lines span:nth-child(3) {
+    width: 90%;
+}
+
+.prescription-lines span:nth-child(4) {
+    width: 60%;
+}
+
+
+/* =========================================
+   KIOSK BOTTOM
+========================================= */
+
+.kiosk-bottom {
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.kiosk-bottom span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #27272a;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.visual-description {
+    display: flex;
+    gap: 14px;
+    padding: 17px;
+    border-radius: 15px;
+    border: 1px solid #1f1f23;
+    background: #0d0d0f;
+}
+
+.description-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    font-size: 23px;
+}
+
+.visual-description span {
+    color: #2563eb;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.visual-description h3 {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.visual-description p {
+    margin: 0;
+    color: #71717a;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.visual-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.visual-navigation button {
+    padding: 10px 14px;
+    border-radius: 9px;
+    border: 1px solid #27272a;
+    background: #111;
+    color: #d4d4d8;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.visual-navigation button:hover:not(:disabled) {
+    border-color: #2563eb;
+}
+
+.visual-navigation button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.progress-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.progress-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #27272a;
+    transition: 0.3s;
+}
+
+.progress-dots span.active {
+    width: 22px;
+    border-radius: 10px;
+    background: #2563eb;
+}
+
+
+/* =========================================
+   QUICK FLOW
+========================================= */
+
+.quick-flow-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid #27272a;
+    background: #09090b;
+}
+
+.quick-heading {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.quick-heading > span {
+    font-size: 25px;
+}
+
+.quick-heading h2 {
+    margin: 0 0 5px;
+    font-size: 21px;
+}
+
+.quick-heading p {
+    margin: 0;
+    color: #71717a;
+    font-size: 12px;
+}
+
+.quick-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.quick-card {
+    width: 145px;
+    min-height: 125px;
+    padding: 15px;
+    position: relative;
+    border-radius: 15px;
+    border: 1px solid #1f1f23;
+    background: #0d0d0f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quick-card:hover {
+    transform: translateY(-4px);
+    border-color: #2563eb;
+    background: #101522;
+}
+
+.quick-number {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: #52525b;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.quick-card-icon {
+    font-size: 31px;
+    margin: 18px 0 10px;
+}
+
+.quick-card strong {
+    font-size: 11px;
+}
+
+.flow-arrow {
+    color: #2563eb;
+    font-size: 22px;
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.howituse-bottom {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    background:
+        linear-gradient(
+            110deg,
+            rgba(37, 99, 235, 0.12),
+            rgba(0, 0, 0, 0.5)
+        );
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bottom-icon {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: #111827;
+    font-size: 32px;
+}
+
+.howituse-bottom span {
+    color: #60a5fa;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.howituse-bottom h2 {
+    margin: 6px 0;
+    font-size: 22px;
+}
+
+.howituse-bottom p {
+    margin: 0;
+    color: #71717a;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.howituse-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #52525b;
+}
+
+.howituse-footer strong {
+    color: white;
+}
+
+.howituse-footer strong span {
+    color: #2563eb;
+}
+
+.howituse-footer p {
+    font-size: 11px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .howituse-main {
+        grid-template-columns: 300px 1fr;
+    }
+
+    .quick-flow {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .howituse-header {
+        padding: 0 5%;
+    }
+
+    .howituse-main {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-connector {
+        width: 20px;
+    }
+
+    .step-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .step-card {
+        margin-bottom: 0;
+    }
+
+    .visual-guide {
+        min-height: 620px;
+    }
+
+    .quick-flow {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .howituse-header {
+        height: 65px;
+    }
+
+    .howituse-logo {
+        font-size: 20px;
+    }
+
+    .guide-badge {
+        display: none;
+    }
+
+    .howituse-hero {
+        margin-top: 45px;
+    }
+
+    .howituse-hero h1 {
+        font-size: 40px;
+        letter-spacing: -1px;
+    }
+
+    .howituse-hero > p {
+        font-size: 14px;
+    }
+
+    .journey-line {
+        gap: 3px;
+    }
+
+    .journey-step {
+        width: 43px;
+        height: 43px;
+    }
+
+    .journey-step span {
+        font-size: 18px;
+    }
+
+    .journey-connector {
+        width: 8px;
+    }
+
+    .howituse-main,
+    .quick-flow-section,
+    .howituse-bottom {
+        width: 94%;
+    }
+
+    .step-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .visual-guide {
+        padding: 18px;
+    }
+
+    .kiosk-device {
+        width: 240px;
+        height: 340px;
+    }
+
+    .kiosk-screen {
+        height: 255px;
+    }
+
+    .kiosk-stage {
+        min-height: 350px;
+    }
+
+    .visual-heading h2 {
+        font-size: 22px;
+    }
+
+    .quick-flow-section {
+        padding: 20px;
+    }
+
+    .quick-card {
+        width: 135px;
+    }
+
+    .howituse-bottom {
+        align-items: flex-start;
+        padding: 22px;
+    }
+
+    .howituse-bottom h2 {
+        font-size: 18px;
+    }
+
+}
