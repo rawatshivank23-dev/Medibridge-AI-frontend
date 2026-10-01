@@ -99,7 +99,6 @@ function Home() {
       begin: "to begin",
 
       aadhaar: "Aadhaar",
-      golden: "Golden",
       swasthya: "Swasthya",
       other: "Other",
       card: "Card",
@@ -192,7 +191,6 @@ function Home() {
       begin: "शुरू करने के लिए",
 
       aadhaar: "आधार",
-      golden: "गोल्डन",
       swasthya: "स्वास्थ्य",
       other: "अन्य",
       card: "कार्ड",
@@ -377,8 +375,8 @@ function Home() {
 
     speech.lang =
       language === "HI"
-        ? "hi-"
-        : "en-";
+        ? "hi-IN"
+        : "en-IN";
 
     speech.rate = 0.9;
     speech.pitch = 1;
@@ -482,10 +480,6 @@ function Home() {
         navigate("/scan-card");
         break;
 
-      case "Golden Card":
-        navigate("/scan-card");
-        break;
-
       case "Swasthya Card":
         navigate("/scan-card");
         break;
@@ -566,7 +560,7 @@ function Home() {
                 minWidth: "80px",
               }}
             >
-               हिंदी
+              हिंदी
             </button>
 
 
@@ -592,7 +586,7 @@ function Home() {
                 minWidth: "90px",
               }}
             >
-               English
+              English
             </button>
 
           </div>
@@ -802,7 +796,12 @@ function Home() {
 
               {/* ================= CARD OPTIONS ================= */}
 
-              <div className="scan-options">
+              <div
+                className="scan-options"
+                style={{
+                  gap: "18px",
+                }}
+              >
 
 
                 {/* AADHAAR */}
@@ -826,37 +825,6 @@ function Home() {
 
                   <strong>
                     {t.aadhaar}
-                  </strong>
-
-                  <small>
-                    {t.card}
-                  </small>
-
-                </button>
-
-
-                {/* GOLDEN */}
-
-                <button
-                  type="button"
-                  className="gold-card"
-                  onClick={(e) => {
-
-                    e.stopPropagation();
-
-                    handleAction(
-                      "Golden Card"
-                    );
-
-                  }}
-                >
-
-                  <span>
-                    ★
-                  </span>
-
-                  <strong>
-                    {t.golden}
                   </strong>
 
                   <small>

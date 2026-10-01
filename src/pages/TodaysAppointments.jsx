@@ -1,86 +1,122 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/TodaysAppointments.css";
+import API from "../services/Api";
 
 function TodaysAppointments() {
 
   const [search, setSearch] = useState("");
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const appointments = [
-    {
-      id: 1,
-      time: "09:30 AM",
-      doctor: "Dr. Rajesh Mehta",
-      department: "General Medicine",
-      token: "P-014",
-      room: "101",
-      status: "Completed"
-    },
-    {
-      id: 2,
-      time: "10:15 AM",
-      doctor: "Dr. Priya Sharma",
-      department: "Cardiology",
-      token: "P-017",
-      room: "203",
-      status: "In Queue"
-    },
-    {
-      id: 3,
-      time: "11:00 AM",
-      doctor: "Dr. Amit Verma",
-      department: "Orthopedics",
-      token: "P-018",
-      room: "105",
-      status: "Upcoming"
-    },
-    {
-      id: 4,
-      time: "12:30 PM",
-      doctor: "Dr. Neha Gupta",
-      department: "Pediatrics",
-      token: "P-019",
-      room: "202",
-      status: "Upcoming"
-    },
-    {
-      id: 5,
-      time: "02:00 PM",
-      doctor: "Dr. Arjun Kapoor",
-      department: "Dermatology",
-      token: "P-020",
-      room: "108",
-      status: "Upcoming"
-    },
-    {
-      id: 6,
-      time: "03:30 PM",
-      doctor: "Dr. Anjali Singh",
-      department: "Gynecology",
-      token: "P-021",
-      room: "205",
-      status: "Upcoming"
-    }
-  ];
+  // ================= FETCH APPOINTMENTS =================
 
-  const filteredAppointments = appointments.filter((appointment) =>
-    appointment.doctor
-      .toLowerCase()
-      .includes(search.toLowerCase()) ||
-    appointment.department
-      .toLowerCase()
-      .includes(search.toLowerCase()) ||
-    appointment.token
-      .toLowerCase()
-      .includes(search.toLowerCase())
-  );
+  useEffect(() => {
+
+    API.get("/appointments")
+      .then((response) => {
+
+        console.log("Appointments from backend:", response.data);
+
+        setAppointments(response.data);
+
+      })
+      .catch((error) => {
+
+        console.error("Error fetching appointments:", error);
+
+        setError("Unable to load appointments.");
+
+      })
+      .finally(() => {
+
+        setLoading(false);
+
+      });
+
+  }, []);
+
+
+  // ================= SEARCH =================
+
+  const filteredAppointments = appointments.filter((appointment) => {
+
+    const doctorName = appointment.doctor?.name || "";
+    const token = appointment.queueNumber?.toString() || "";
+
+    return (
+      doctorName.toLowerCase().includes(search.toLowerCase()) ||
+      token.toLowerCase().includes(search.toLowerCase())
+    );
+
+  });
+
+
+  // ================= BUTTONS =================
 
   const handleBack = () => {
     window.history.back();
   };
 
+
   const handleHome = () => {
     window.location.href = "/";
   };
+
+
+  // ================= LOADING =================
+
+  if (loading) {
+
+    return (
+      <div className="today-page">
+
+        <div className="no-results">
+
+          <span>⏳</span>
+
+          <h3>
+            Loading appointments...
+          </h3>
+
+          <p>
+            Please wait while we fetch your appointments.
+          </p>
+
+        </div>
+
+      </div>
+    );
+
+  }
+
+
+  // ================= ERROR =================
+
+  if (error) {
+
+    return (
+      <div className="today-page">
+
+        <div className="no-results">
+
+          <span>⚠️</span>
+
+          <h3>
+            {error}
+          </h3>
+
+          <p>
+            Please try again later.
+          </p>
+
+        </div>
+
+      </div>
+    );
+
+  }
+
 
   return (
     <div className="today-page">
@@ -96,6 +132,7 @@ function TodaysAppointments() {
           </div>
 
           <div>
+
             <h1>
               MEDIBRIDGE <span>AI</span>
             </h1>
@@ -103,6 +140,7 @@ function TodaysAppointments() {
             <p>
               SMART HEALTHCARE KIOSK
             </p>
+
           </div>
 
         </div>
@@ -147,12 +185,27 @@ function TodaysAppointments() {
       <div className="date-bar">
 
         <div>
-          <span className="date-icon">📅</span>
+
+          <span className="date-icon">
+            📅
+          </span>
 
           <div>
-            <small>DATE</small>
-            <strong>27 September 2026</strong>
+
+            <small>
+              DATE
+            </small>
+
+            <strong>
+              {new Date().toLocaleDateString("en-IN", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+              })}
+            </strong>
+
           </div>
+
         </div>
 
 
@@ -175,11 +228,13 @@ function TodaysAppointments() {
 
       <div className="today-search">
 
-        <span>🔍</span>
+        <span>
+          🔍
+        </span>
 
         <input
           type="text"
-          placeholder="Search doctor, department or token..."
+          placeholder="Search doctor or token..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -221,7 +276,7 @@ function TodaysAppointments() {
                 </span>
 
                 <strong>
-                  {appointment.time}
+                  {appointment.appointmentTime || "N/A"}
                 </strong>
 
               </div>
@@ -238,7 +293,7 @@ function TodaysAppointments() {
                 <div>
 
                   <strong>
-                    {appointment.doctor}
+                    {appointment.doctor?.name || "Unknown Doctor"}
                   </strong>
 
                   <small>
@@ -254,7 +309,7 @@ function TodaysAppointments() {
 
               <div className="department">
 
-                {appointment.department}
+                {appointment.doctor?.specialization || "N/A"}
 
               </div>
 
@@ -263,7 +318,10 @@ function TodaysAppointments() {
 
               <div className="token">
 
-                {appointment.token}
+                {appointment.queueNumber
+                  ? `P-${String(appointment.queueNumber).padStart(3, "0")}`
+                  : "N/A"
+                }
 
               </div>
 
@@ -272,7 +330,7 @@ function TodaysAppointments() {
 
               <div className="room">
 
-                Room {appointment.room}
+                N/A
 
               </div>
 
@@ -284,11 +342,15 @@ function TodaysAppointments() {
                 <span
                   className={`appointment-status ${
                     appointment.status
-                      .toLowerCase()
-                      .replace(" ", "-")
+                      ? appointment.status
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")
+                      : ""
                   }`}
                 >
-                  {appointment.status}
+
+                  {appointment.status || "Upcoming"}
+
                 </span>
 
               </div>
@@ -308,7 +370,10 @@ function TodaysAppointments() {
             </h3>
 
             <p>
-              Try another doctor, department or token.
+              {appointments.length === 0
+                ? "There are no appointments available."
+                : "Try another doctor or token."
+              }
             </p>
 
           </div>

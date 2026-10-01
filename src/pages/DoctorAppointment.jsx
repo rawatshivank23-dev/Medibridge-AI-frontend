@@ -1,56 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/DoctorAppointment.css";
-
-const doctors = [
-  {
-    id: 1,
-    name: "Dr. Rajesh Mehta",
-    department: "General Medicine",
-    qualification: "MBBS, MD",
-    experience: "12 Years",
-    room: "Room 101",
-    status: "Available",
-    queue: 4,
-  },
-  {
-    id: 2,
-    name: "Dr. Priya Sharma",
-    department: "Cardiology",
-    qualification: "MBBS, MD, DM",
-    experience: "15 Years",
-    room: "Room 203",
-    status: "Available",
-    queue: 7,
-  },
-  {
-    id: 3,
-    name: "Dr. Amit Verma",
-    department: "Orthopedics",
-    qualification: "MBBS, MS",
-    experience: "10 Years",
-    room: "Room 105",
-    status: "Busy",
-    queue: 12,
-  },
-  {
-    id: 4,
-    name: "Dr. Neha Gupta",
-    department: "Pediatrics",
-    qualification: "MBBS, MD",
-    experience: "8 Years",
-    room: "Room 202",
-    status: "Available",
-    queue: 3,
-  },
-];
-
-const departments = [
-  "All Departments",
-  "General Medicine",
-  "Cardiology",
-  "Orthopedics",
-  "Pediatrics",
-];
+import API from "../services/Api";
 
 const timeSlots = [
   "09:30 AM",
@@ -91,6 +41,14 @@ const queuePatients = [
 ];
 
 function DoctorAppointment() {
+  const [doctors, setDoctors] = useState([]);
+  const [loadingDoctors, setLoadingDoctors] = useState(true);
+  const [doctorError, setDoctorError] = useState("");
+
+  // Temporary patient ID for the patient already created in Postman.
+  // Later this can come from the ID-card/patient-selection flow.
+  const [patientId] = useState(1);
+
   const [department, setDepartment] =
     useState("All Departments");
 
@@ -110,6 +68,46 @@ function DoctorAppointment() {
 
   const [token, setToken] =
     useState("");
+
+  useEffect(() => {
+    const loadDoctors = async () => {
+      try {
+        setLoadingDoctors(true);
+        setDoctorError("");
+
+        const response = await API.get("/doctors");
+
+        const backendDoctors = response.data.map((doctor) => ({
+          id: doctor.id,
+          name: doctor.name,
+          department: doctor.specialization || "General",
+          qualification: "—",
+          experience: "—",
+          room: "N/A",
+          status: "Available",
+          queue: 0,
+        }));
+
+        setDoctors(backendDoctors);
+      } catch (error) {
+        console.error("Error loading doctors:", error);
+        setDoctorError("Unable to load doctors from server.");
+      } finally {
+        setLoadingDoctors(false);
+      }
+    };
+
+    loadDoctors();
+  }, []);
+
+  const departments = [
+    "All Departments",
+    ...new Set(
+      doctors
+        .map((doctor) => doctor.department)
+        .filter(Boolean)
+    ),
+  ];
 
   /* -------------------------------------------------------
      FILTER DOCTORS
@@ -148,7 +146,7 @@ function DoctorAppointment() {
      CONFIRM APPOINTMENT
   ------------------------------------------------------- */
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (!selectedDoctor) {
       alert("Please select a doctor.");
       return;
@@ -159,11 +157,40 @@ function DoctorAppointment() {
       return;
     }
 
-    const newToken =
-      "P-" + Math.floor(100 + Math.random() * 900);
+    try {
+      const appointmentDate =
+        selectedDate === "Today"
+          ? new Date().toISOString().split("T")[0]
+          : selectedDate === "Tomorrow"
+          ? new Date(Date.now() + 24 * 60 * 60 * 1000)
+              .toISOString()
+              .split("T")[0]
+          : selectedDate;
 
-    setToken(newToken);
-    setShowSuccess(true);
+      const response = await API.post("/appointments", {
+        appointmentDate,
+        appointmentTime: selectedTime,
+        status: "Upcoming",
+        patientId,
+        doctorId: selectedDoctor.id,
+      });
+
+      const queueNumber = response.data.queueNumber;
+      const newToken = queueNumber
+        ? `P-${String(queueNumber).padStart(3, "0")}`
+        : "P-001";
+
+      setToken(newToken);
+      setShowSuccess(true);
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+
+      const message =
+        error.response?.data?.message ||
+        "Appointment booking failed. Please make sure the backend is running.";
+
+      alert(message);
+    }
   };
 
   /* -------------------------------------------------------
@@ -410,7 +437,19 @@ function DoctorAppointment() {
 
           <div className="da-doctor-grid">
 
-            {filteredDoctors.length > 0 ? (
+            {loadingDoctors ? (
+
+              <div className="da-no-doctor">
+                Loading doctors...
+              </div>
+
+            ) : doctorError ? (
+
+              <div className="da-no-doctor">
+                {doctorError}
+              </div>
+
+            ) : filteredDoctors.length > 0 ? (
 
               filteredDoctors.map((doctor) => (
 
@@ -557,23 +596,14 @@ function DoctorAppointment() {
                     ? "da-date-card selected"
                     : "da-date-card"
                 }
-                onClick={() =>
-                  setSelectedDate("Today")
-                }
+                onClick={() => setSelectedDate("Today")}
               >
-                <small>
-                  TODAY
-                </small>
-
-                <strong>
-                  27
-                </strong>
-
+                <small>TODAY</small>
+                <strong>{new Date().getDate()}</strong>
                 <span>
-                  SEP
+                  {new Date().toLocaleString("en-US", { month: "short" }).toUpperCase()}
                 </span>
               </button>
-
 
               <button
                 className={
@@ -581,68 +611,56 @@ function DoctorAppointment() {
                     ? "da-date-card selected"
                     : "da-date-card"
                 }
-                onClick={() =>
-                  setSelectedDate("Tomorrow")
-                }
+                onClick={() => setSelectedDate("Tomorrow")}
               >
-                <small>
-                  TOMORROW
-                </small>
-
-                <strong>
-                  28
-                </strong>
-
+                <small>TOMORROW</small>
+                <strong>{new Date(Date.now() + 86400000).getDate()}</strong>
                 <span>
-                  SEP
+                  {new Date(Date.now() + 86400000)
+                    .toLocaleString("en-US", { month: "short" })
+                    .toUpperCase()}
                 </span>
               </button>
 
-
               <button
                 className={
-                  selectedDate === "29 Sep"
+                  selectedDate === new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0]
                     ? "da-date-card selected"
                     : "da-date-card"
                 }
                 onClick={() =>
-                  setSelectedDate("29 Sep")
+                  setSelectedDate(
+                    new Date(Date.now() + 2 * 86400000).toISOString().split("T")[0]
+                  )
                 }
               >
-                <small>
-                  TUESDAY
-                </small>
-
-                <strong>
-                  29
-                </strong>
-
+                <small>DAY AFTER</small>
+                <strong>{new Date(Date.now() + 2 * 86400000).getDate()}</strong>
                 <span>
-                  SEP
+                  {new Date(Date.now() + 2 * 86400000)
+                    .toLocaleString("en-US", { month: "short" })
+                    .toUpperCase()}
                 </span>
               </button>
 
-
               <button
                 className={
-                  selectedDate === "30 Sep"
+                  selectedDate === new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0]
                     ? "da-date-card selected"
                     : "da-date-card"
                 }
                 onClick={() =>
-                  setSelectedDate("30 Sep")
+                  setSelectedDate(
+                    new Date(Date.now() + 3 * 86400000).toISOString().split("T")[0]
+                  )
                 }
               >
-                <small>
-                  WEDNESDAY
-                </small>
-
-                <strong>
-                  30
-                </strong>
-
+                <small>DAY AFTER</small>
+                <strong>{new Date(Date.now() + 3 * 86400000).getDate()}</strong>
                 <span>
-                  SEP
+                  {new Date(Date.now() + 3 * 86400000)
+                    .toLocaleString("en-US", { month: "short" })
+                    .toUpperCase()}
                 </span>
               </button>
 
@@ -1075,11 +1093,11 @@ function DoctorAppointment() {
 
 
        <button
-  className="next-btn"
-  onClick={() => window.location.assign("/live-queue")}
->
-  NEXT →
-</button>
+          className="next-btn"
+          onClick={handleConfirm}
+        >
+          NEXT →
+        </button>
       </div>
 
 
