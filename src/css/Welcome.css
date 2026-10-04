@@ -1,0 +1,1248 @@
+/* =========================================================
+   MEDIBRIDGE AI - WELCOME SCREEN
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background: #eaf5fb;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.welcome-page {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(25, 196, 235, 0.17),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(0, 104, 185, 0.13),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #e9f8ff,
+      #f9fdff,
+      #e3f4fb
+    );
+}
+
+
+/* =========================================================
+   KIOSK
+   ========================================================= */
+
+.kiosk-container {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+
+  background: #ffffff;
+
+  border-radius: 0;
+
+  overflow: hidden;
+
+  border: 0;
+
+  box-shadow: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.welcome-header {
+  min-height: 92px;
+  height: 92px;
+
+  padding: 12px 38px;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      105deg,
+      #045ba6,
+      #0877c2,
+      #075da9
+    );
+
+  color: white;
+}
+
+
+/* =========================================================
+   BRAND SECTION
+   ========================================================= */
+
+.brand-section {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 430px;
+}
+
+
+/* =========================================================
+   UNIQUE MEDICAL AI LOGO
+   ========================================================= */
+
+.medical-ai-logo {
+  width: 62px;
+  height: 62px;
+
+  position: relative;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.20),
+      rgba(255,255,255,0.06)
+    );
+
+  border: 1px solid rgba(255,255,255,0.30);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.18),
+    inset 0 0 20px rgba(255,255,255,0.08);
+
+  overflow: visible;
+
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   OUTER GLOW RING
+   ========================================================= */
+
+.logo-ring {
+  position: absolute;
+
+  inset: 5px;
+
+  border-radius: 50%;
+
+  border:
+    2px solid rgba(50, 226, 245, 0.75);
+
+  box-shadow:
+    0 0 14px rgba(36, 218, 242, 0.65);
+
+  animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   HOSPITAL CROSS
+   ========================================================= */
+
+.hospital-cross {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  left: 14px;
+  top: 14px;
+
+  z-index: 5;
+}
+
+
+.cross-horizontal,
+.cross-vertical {
+  position: absolute;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #bff7ff
+    );
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 0 10px rgba(84, 232, 255, 0.65);
+}
+
+
+.cross-horizontal {
+  width: 34px;
+  height: 11px;
+
+  top: 12px;
+  left: 0;
+}
+
+
+.cross-vertical {
+  width: 11px;
+  height: 34px;
+
+  top: 0;
+  left: 12px;
+}
+
+
+/* =========================================================
+   HEARTBEAT
+   ========================================================= */
+
+.heartbeat {
+  position: absolute;
+
+  left: 9px;
+  right: 9px;
+
+  bottom: 8px;
+
+  height: 12px;
+
+  overflow: hidden;
+
+  z-index: 8;
+}
+
+
+.heartbeat span {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 12%,
+      #35e8f4 12%,
+      #35e8f4 15%,
+      transparent 15%,
+      transparent 28%,
+      #35e8f4 28%,
+      #35e8f4 31%,
+      transparent 31%,
+      transparent 40%,
+      #35e8f4 40%,
+      #35e8f4 43%,
+      transparent 43%
+    );
+
+  opacity: 0.9;
+
+  animation: heartbeatMove 1.8s linear infinite;
+}
+
+
+/* =========================================================
+   AI NODES
+   ========================================================= */
+
+.ai-node {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #45e8f4;
+
+  box-shadow:
+    0 0 8px #45e8f4;
+
+  z-index: 10;
+
+  animation:
+    nodePulse 1.8s ease-in-out infinite;
+}
+
+
+.node-top {
+  top: 4px;
+  left: 31px;
+}
+
+
+.node-right {
+  top: 31px;
+  right: 4px;
+}
+
+
+.node-bottom {
+  bottom: 4px;
+  left: 31px;
+}
+
+
+.node-left {
+  top: 31px;
+  left: 4px;
+}
+
+
+@keyframes logoFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+
+@keyframes ringPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.06);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes nodePulse {
+
+  0%,
+  100% {
+    transform: scale(0.8);
+
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.35);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes heartbeatMove {
+
+  0% {
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.brand-text {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.welcome-brand-line {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 8px;
+
+  white-space: nowrap;
+}
+
+
+.welcome-small {
+  font-size: 15px;
+
+  font-weight: 600;
+
+  opacity: 0.9;
+}
+
+
+.brand-text h1 {
+  margin: 0;
+
+  font-size: 30px;
+
+  font-weight: 850;
+
+  letter-spacing: -0.8px;
+}
+
+
+/* AI text */
+
+.ai-text {
+  color: #4de8f3;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 0 12px rgba(66, 229, 242, 0.5);
+}
+
+
+.brand-text p {
+  margin: 3px 0 0;
+
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+
+  opacity: 0.88;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.header-divider {
+  height: 58px;
+
+  width: 2px;
+
+  background:
+    rgba(255,255,255,0.55);
+
+  margin-left: auto;
+
+  margin-right: 28px;
+}
+
+
+/* =========================================================
+   SMART KIOSK STATUS
+   ========================================================= */
+
+.welcome-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #38e69b;
+
+  box-shadow:
+    0 0 10px #38e69b;
+
+  animation:
+    onlinePulse 1.7s infinite;
+}
+
+
+@keyframes onlinePulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.2);
+  }
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.welcome-content {
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 18px 45px 12px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f8fcff
+    );
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.welcome-title-area {
+  text-align: center;
+
+  margin-bottom: 16px;
+
+  flex-shrink: 0;
+}
+
+
+.welcome-badge {
+  width: 40px;
+  height: 40px;
+
+  margin: 0 auto 6px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e4f8ff,
+      #c9edfa
+    );
+
+  color: #0877c4;
+
+  font-size: 20px;
+
+  box-shadow:
+    0 5px 18px
+    rgba(13, 125, 185, 0.12);
+}
+
+
+.welcome-title-area h2 {
+  margin: 0;
+
+  color: #103f70;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+
+.welcome-title-area p {
+  margin: 5px 0 0;
+
+  color: #668197;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LANGUAGE GRID
+   ========================================================= */
+
+.language-container {
+  width: min(900px, 100%);
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LANGUAGE CARD
+   ========================================================= */
+
+.language-card {
+  position: relative;
+
+  min-height: 82px;
+  height: 82px;
+
+  border-radius: 18px;
+
+  border: 2px solid #b7d9ed;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #edf8ff
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 17px;
+
+  padding: 14px 28px;
+
+  color: #174b75;
+
+  font-size: 20px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  box-shadow:
+    0 7px 18px
+    rgba(20, 100, 145, 0.07);
+}
+
+
+.language-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #159bd1;
+
+  box-shadow:
+    0 10px 25px
+    rgba(20, 130, 180, 0.14);
+}
+
+
+.language-card.selected {
+  border: 3px solid #0879c8;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f2fbff,
+      #dff4ff
+    );
+
+  box-shadow:
+    0 0 0 4px
+    rgba(8, 121, 200, 0.08),
+    0 10px 25px
+    rgba(8, 121, 200, 0.13);
+}
+
+
+/* =========================================================
+   LANGUAGE ICON
+   ========================================================= */
+
+.language-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0878c7,
+      #0b9cdb
+    );
+
+  color: white;
+
+  font-size: 21px;
+
+  box-shadow:
+    0 5px 13px
+    rgba(8, 120, 199, 0.22);
+}
+
+
+.language-name {
+  flex: 1;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   CHECK
+   ========================================================= */
+
+.selected-check {
+  position: absolute;
+
+  top: 8px;
+  right: 10px;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #12a576;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   SELECTED LANGUAGE
+   ========================================================= */
+
+.selected-language {
+  margin-top: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 17px;
+
+  border-radius: 30px;
+
+  background: #eef9ff;
+
+  border: 1px solid #c3e3f3;
+
+  color: #57738a;
+
+  font-size: 13px;
+}
+
+
+.selected-language strong {
+  color: #0874bc;
+}
+
+
+.selected-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #16a77b;
+}
+
+
+/* =========================================================
+   CONTINUE
+   ========================================================= */
+
+.continue-button {
+  margin-top: 14px;
+
+  min-width: 300px;
+
+  width: 320px;
+
+  height: 50px;
+
+  padding: 0 25px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 35px;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0876c8,
+      #08a0df
+    );
+
+  box-shadow:
+    0 9px 23px
+    rgba(7, 119, 201, 0.28);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.continue-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 13px 28px
+    rgba(7, 119, 201, 0.34);
+}
+
+
+.continue-arrow {
+  font-size: 23px;
+}
+
+
+/* =========================================================
+   HELP
+   ========================================================= */
+
+.help-text {
+  margin-top: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #7790a2;
+
+  font-size: 11px;
+}
+
+
+.help-icon {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1.5px solid #7d98aa;
+
+  font-size: 11px;
+
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.welcome-footer {
+  min-height: 44px;
+  height: 44px;
+
+  padding: 0 30px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-shrink: 0;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      100deg,
+      #075da7,
+      #0877c3
+    );
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+
+.welcome-footer i {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.65);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .welcome-page {
+    padding: 0;
+  }
+
+  .kiosk-container {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+
+    border: 0;
+
+    border-radius: 0;
+  }
+
+  .welcome-header {
+    min-height: 82px;
+    height: 82px;
+
+    padding: 12px 25px;
+  }
+
+  .brand-section {
+    min-width: auto;
+  }
+
+  .header-divider {
+    margin-left: auto;
+  }
+
+  .welcome-content {
+    padding: 16px 30px 10px;
+  }
+
+  .language-container {
+    width: min(850px, 100%);
+    gap: 16px;
+  }
+
+  .language-card {
+    height: 78px;
+    min-height: 78px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .welcome-header {
+    min-height: 76px;
+    height: 76px;
+
+    padding: 10px 18px;
+  }
+
+
+  .medical-ai-logo {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 15px;
+  }
+
+
+  .hospital-cross {
+    width: 26px;
+    height: 26px;
+
+    left: 10px;
+    top: 10px;
+  }
+
+
+  .cross-horizontal {
+    width: 26px;
+    height: 8px;
+
+    top: 9px;
+  }
+
+
+  .cross-vertical {
+    width: 8px;
+    height: 26px;
+
+    left: 9px;
+  }
+
+
+  .node-top {
+    left: 20px;
+  }
+
+
+  .node-bottom {
+    left: 20px;
+  }
+
+
+  .node-right {
+    right: 3px;
+  }
+
+
+  .node-left {
+    left: 3px;
+  }
+
+
+  .brand-text h1 {
+    font-size: 20px;
+  }
+
+
+  .welcome-small {
+    font-size: 9px;
+  }
+
+
+  .brand-text p {
+    font-size: 7px;
+  }
+
+
+  .welcome-brand-line {
+    gap: 5px;
+  }
+
+
+  .header-divider {
+    display: none;
+  }
+
+
+  .welcome-label {
+    margin-left: auto;
+
+    font-size: 11px;
+  }
+
+
+  .welcome-content {
+    padding: 15px 15px 8px;
+
+    overflow-y: auto;
+  }
+
+
+  .welcome-title-area {
+    margin-bottom: 12px;
+  }
+
+
+  .welcome-badge {
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 5px;
+
+    font-size: 18px;
+  }
+
+
+  .welcome-title-area h2 {
+    font-size: 25px;
+  }
+
+
+  .welcome-title-area p {
+    font-size: 12px;
+  }
+
+
+  .language-container {
+    grid-template-columns: 1fr;
+
+    width: 100%;
+
+    gap: 12px;
+  }
+
+
+  .language-card {
+    width: 100%;
+
+    height: 70px;
+    min-height: 70px;
+
+    padding: 12px 18px;
+
+    font-size: 17px;
+  }
+
+
+  .language-icon {
+    width: 43px;
+    height: 43px;
+
+    font-size: 18px;
+  }
+
+
+  .selected-language {
+    margin-top: 9px;
+
+    padding: 7px 14px;
+
+    font-size: 12px;
+  }
+
+
+  .continue-button {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 48px;
+
+    margin-top: 11px;
+
+    font-size: 16px;
+  }
+
+
+  .welcome-footer {
+    min-height: 42px;
+    height: 42px;
+
+    gap: 8px;
+
+    font-size: 8px;
+  }
+
+
+  .help-text {
+    text-align: center;
+
+    justify-content: center;
+
+    line-height: 1.3;
+
+    margin-top: 8px;
+  }
+
+}
